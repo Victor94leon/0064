@@ -39,7 +39,7 @@ public class StockManager
     {
         boolean productoEncontrado = false;
         int index = 0;
-        while (!productoEncontrado && index<=stock.size()) {
+        while (!productoEncontrado && index<stock.size()) {
             if (stock.get(index).getID()==id) {
                 stock.get(index).increaseQuantity(amount);
                 productoEncontrado = true;
