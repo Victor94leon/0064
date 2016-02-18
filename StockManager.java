@@ -67,7 +67,7 @@ public class StockManager
     public void printProductDetails()
     {
         for (Product productoEnLista : stock) {
-            System.out.println(productoEnLista.toString());
+            System.out.println(productoEnLista);
         }
     }
 }
