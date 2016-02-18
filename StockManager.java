@@ -46,7 +46,17 @@ public class StockManager
      */
     public Product findProduct(int id)
     {
-        return null;
+        Product productoBuscado = null;
+        boolean productoEncontrado = false;
+        int index = 0;
+        while (!productoEncontrado || index<stock.size()) {
+            if (stock.get(index).getID()==id) {
+                productoEncontrado = true;
+                productoBuscado = stock.get(index);
+            }
+            index++;
+        }
+        return productoBuscado;
     }
     
     /**
