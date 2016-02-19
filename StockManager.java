@@ -107,4 +107,23 @@ public class StockManager
             }
         }
     }
+    
+    /**
+     * Método que busca un producto en el stock mediante el nombre del product.
+     * Devuelve un objeto Product si encuentra una coincidencia o null si no la encuentra.
+     */
+    public Product findProduct(String name)
+    {
+        Product productoBuscado = null;
+        boolean productoEncontrado = false;
+        int index = 0;
+        while (!productoEncontrado && index<stock.size()) {
+            if (stock.get(index).getName()==name) {
+                productoEncontrado = true;
+                productoBuscado = stock.get(index);
+            }
+            index++;
+        }
+        return productoBuscado;
+    }
 }
