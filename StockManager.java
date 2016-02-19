@@ -37,14 +37,12 @@ public class StockManager
      */
     public void delivery(int id, int amount)
     {
-        boolean productoEncontrado = false;
-        int index = 0;
-        while (!productoEncontrado && index<stock.size()) {
-            if (stock.get(index).getID()==id) {
-                stock.get(index).increaseQuantity(amount);
-                productoEncontrado = true;
-            }
-            index++;
+        Product producto = findProduct(id);
+        if(producto != null){
+            producto.increaseQuantity(amount);
+        }
+        else{
+            System.out.println("El id indicado no pertenece a ningun producto");
         }
     }
 
@@ -78,10 +76,9 @@ public class StockManager
     public int numberInStock(int id)
     {
         int numeroDeProductos = 0;
-        for (int index = 0; index<stock.size(); index++) {
-            if (stock.get(index).getID()==id) {
-                numeroDeProductos++;
-            }
+        Product producto = findProduct(id);
+        if (producto != null) {
+            numeroDeProductos = producto.getQuantity();
         }
         return numeroDeProductos;
     }
@@ -93,6 +90,19 @@ public class StockManager
     {
         for (Product productoEnLista : stock) {
             System.out.println(productoEnLista);
+        }
+    }
+    
+    /**
+     * Método que imprime los detalles de todos los productos cuyo stock está por debajo
+     * de un determinado número
+     */
+    public void underGivenNumberInStock(int cantidadStock)
+    {
+        for (Product productoEnLista : stock) {
+            if (productoEnLista.getQuantity()<cantidadStock) {
+                System.out.println(productoEnLista);
+            }
         }
     }
 }
