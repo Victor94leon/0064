@@ -26,7 +26,9 @@ public class StockManager
      */
     public void addProduct(Product item)
     {
-        stock.add(item);
+        if (findProduct(item.getID())==null) {
+            stock.add(item);
+        }
     }
 
     /**
